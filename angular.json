@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Search": {
+    "spa-parcel-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/Search",
+            "outputPath": "dist/spa-parcel-angular",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "main": "src/main.single-spa.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
@@ -30,7 +30,12 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "extra-webpack.config.js",
+              "libraryName": "spa-parcel-angular",
+              "libraryTarget": "umd"
+            }
           },
           "configurations": {
             "production": {
@@ -41,7 +46,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "none",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
@@ -63,20 +68,20 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "Search:build"
+            "browserTarget": "spa-parcel-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Search:build:production"
+              "browserTarget": "spa-parcel-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Search:build"
+            "browserTarget": "spa-parcel-angular:build"
           }
         },
         "test": {
@@ -113,16 +118,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Search:serve"
+            "devServerTarget": "spa-parcel-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Search:serve:production"
+              "devServerTarget": "spa-parcel-angular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Search"
+  "defaultProject": "spa-parcel-angular"
 }
