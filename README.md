@@ -20,4 +20,4 @@ yarn start
 
 ## main branch
 
-Javascript chunk accessible via `http://localhost:8600/main.js`
+Javascript chunk accessible via [http://localhost:8600/main.js](http://localhost:8600/main.js)
