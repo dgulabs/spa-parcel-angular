@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --project spa-parcel-angular --disable-host-check --port 8600 --deployUrl http://localhost:8600/ --live-reload false",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:single-spa:spa-parcel-angular": "ng build spa-parcel-angular --prod --deploy-url http://localhost:8600/",
-    "serve:single-spa:spa-parcel-angular": "ng s --project spa-parcel-angular --disable-host-check --port 8600 --deploy-url http://localhost:8600/ --live-reload false"
+    "build:single-spa:spa-parcel-angular": "ng build spa-parcel-angular --prod --deployUrl http://localhost:8600/",
+    "serve:single-spa:spa-parcel-angular": "ng s --project spa-parcel-angular --disable-host-check --port 8600 --deploy-url http://localhost:8600/ --live-reload false",
+    "serve": "yarn serve:single-spa:spa-parcel-angular"
   },
   "private": true,
   "dependencies": {
